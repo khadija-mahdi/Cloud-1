@@ -1,0 +1,5 @@
+---
+- name: Deploy nginx container
+  command: docker-compose -f srcs/docker-compose.yml up -d --build nginx
+  args:
+    chdir: /home/ubuntu/cloud-1

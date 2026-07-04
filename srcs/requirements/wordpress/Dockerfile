@@ -4,10 +4,6 @@ FROM debian:bullseye
 # Update and upgrade packages
 RUN apt-get update -y && apt-get upgrade -y && apt-get install -y php php-fpm php-mysql mariadb-client wget sendmail
 
-RUN apt-get install -y sendmail
-
-RUN apt install -y  redis-tools
-
 
 WORKDIR  /var/www/html
 

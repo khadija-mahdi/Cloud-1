@@ -1,0 +1,22 @@
+---
+- name: Create project directory
+  file:
+    path: /home/ubuntu/cloud-1
+    state: directory
+    mode: '0755'
+
+- name: Create data directory
+  file:
+    path: /home/ubuntu/data
+    state: directory
+    mode: '0755'
+
+- name: Copy srcs to remote server
+  copy:
+    src: srcs
+    dest: /home/ubuntu/cloud-1/
+
+- name: Copy Makefile to remote server
+  copy:
+    src: Makefile
+    dest: /home/ubuntu/cloud-1/Makefile

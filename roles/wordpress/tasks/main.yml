@@ -1,0 +1,11 @@
+---
+- name: Create wordpress data directory
+  file:
+    path: /home/ubuntu/data/wordpress
+    state: directory
+    mode: '0755'
+
+- name: Deploy wordpress container
+  command: docker-compose -f srcs/docker-compose.yml up -d --build wordpress
+  args:
+    chdir: /home/ubuntu/cloud-1

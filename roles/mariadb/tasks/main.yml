@@ -1,0 +1,11 @@
+---
+- name: Create mariadb data directory
+  file:
+    path: /home/ubuntu/data/mariadb
+    state: directory
+    mode: '0755'
+
+- name: Deploy mariadb container
+  command: docker-compose -f srcs/docker-compose.yml up -d --build mariadb
+  args:
+    chdir: /home/ubuntu/cloud-1

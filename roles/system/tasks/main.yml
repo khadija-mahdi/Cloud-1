@@ -1,0 +1,9 @@
+---
+- name: Update my system
+  apt:
+    update_cache: yes
+
+- name: Install Make
+  apt:
+    name: make
+    state: present

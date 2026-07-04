@@ -1,0 +1,15 @@
+---
+- name: Install docker
+  apt:
+    name: docker.io
+    state: present
+
+- name: Install docker-compose
+  apt:
+    name: docker-compose
+    state: present
+- name: Add ubuntu user to docker group
+  user:
+    name: ubuntu
+    groups: docker
+    append: yes

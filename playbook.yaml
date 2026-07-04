@@ -1,0 +1,15 @@
+---
+- name: Cloud-1
+  hosts: myhosts
+  become: yes
+
+  roles:
+    - system
+    - docker
+    - firewall
+    - { role: app, tags: [app] }
+    - { role: mariadb, tags: [mariadb, database] }
+    - { role: wordpress, tags: [wordpress, web] }
+    - { role: nginx, tags: [nginx, web] }
+    - { role: phpmyadmin, tags: [phpmyadmin, web] }
+    - { role: status, tags: [status] }

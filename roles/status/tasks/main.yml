@@ -1,0 +1,16 @@
+---
+- name: Check running containers
+  command: docker ps
+  register: docker_ps
+
+- name: Show running containers
+  debug:
+    msg: "{{ docker_ps.stdout_lines }}"
+
+- name: Check listening ports
+  command: ss -tlnp
+  register: ports
+
+- name: Show listening ports
+  debug:
+    msg: "{{ ports.stdout_lines }}"
