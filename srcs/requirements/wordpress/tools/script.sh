@@ -6,6 +6,12 @@ sed -i "s/\(define( 'DB_USER', \).*$/\1'$MARIA_USER' );/" /var/www/html/wp-confi
 sed -i "s/\(define( 'DB_PASSWORD', \).*$/\1'$MARIA_PASSWORD' );/" /var/www/html/wp-config.php
 sed -i "s/\(define( 'DB_HOST', \).*$/\1'mariadb:3306' );/" /var/www/html/wp-config.php
 
+# Wait for MariaDB to accept connections before touching the database
+until mysql -h mariadb -u"$MARIA_USER" -p"$MARIA_PASSWORD" -e "SELECT 1;" >/dev/null 2>&1; do
+    echo "Waiting for MariaDB..."
+    sleep 1
+done
+
 # Only install WordPress if not already installed
 if ! wp core is-installed --allow-root 2>/dev/null; then
     wp core install --allow-root \

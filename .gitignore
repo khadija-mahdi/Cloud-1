@@ -1,0 +1,5 @@
+.env
+*.retry
+*.pem
+*.key
+*.crt

@@ -1,7 +1,8 @@
 FROM debian:bullseye
 
-RUN apt update -y && apt upgrade -y \
-    && apt install -y  mariadb-server ;
+RUN apt update -y \
+    && apt install -y --no-install-recommends mariadb-server \
+    && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 3306
 

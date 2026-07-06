@@ -16,6 +16,12 @@
     src: srcs
     dest: /home/ubuntu/cloud-1/
 
+- name: Set DOMAIN_NAME to this host's address
+  lineinfile:
+    path: /home/ubuntu/cloud-1/srcs/.env
+    regexp: '^DOMAIN_NAME='
+    line: "DOMAIN_NAME={{ ansible_host | default(inventory_hostname) }}"
+
 - name: Copy Makefile to remote server
   copy:
     src: Makefile

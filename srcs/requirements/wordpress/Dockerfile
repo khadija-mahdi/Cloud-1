@@ -2,7 +2,10 @@
 FROM debian:bullseye
 
 # Update and upgrade packages
-RUN apt-get update -y && apt-get upgrade -y && apt-get install -y php php-fpm php-mysql mariadb-client wget sendmail
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends ca-certificates php php-fpm php-mysql mariadb-client wget sendmail \
+    && update-ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
 
 WORKDIR  /var/www/html

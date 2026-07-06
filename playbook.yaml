@@ -12,4 +12,3 @@
     - { role: wordpress, tags: [wordpress, web] }
     - { role: nginx, tags: [nginx, web] }
     - { role: phpmyadmin, tags: [phpmyadmin, web] }
-    - { role: status, tags: [status] }

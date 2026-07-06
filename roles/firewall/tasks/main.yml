@@ -48,8 +48,12 @@
 - name: Save iptables rules
   command: netfilter-persistent save
 
+- name: Gather service facts
+  service_facts:
+
 - name: Stop system nginx
   service:
     name: nginx
     state: stopped
     enabled: false
+  when: "'nginx.service' in ansible_facts.services"

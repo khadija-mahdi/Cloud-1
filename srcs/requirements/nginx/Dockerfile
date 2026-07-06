@@ -3,7 +3,9 @@ FROM debian:bullseye
 ARG DOMAIN_NAME
 ENV DOMAIN_NAME=${DOMAIN_NAME}
 
-RUN apt update -y && apt upgrade -y && apt install -y nginx openssl gettext-base
+RUN apt update -y \
+    && apt install -y --no-install-recommends nginx openssl gettext-base \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /etc/nginx/ssl
 
